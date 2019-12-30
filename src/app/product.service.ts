@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
   
   getAllProducts(): Observable<ProductModel[]> {
-    return this.httpClient.get<ProductModel[]>(this.apiRootUri);
+    return this.httpClient.get<ProductModel[]>(this.apiRootUri + '?$top=50&$orderby=title desc');
   }
 
   getProductsByFilter(): Observable<ProductModel[]> {

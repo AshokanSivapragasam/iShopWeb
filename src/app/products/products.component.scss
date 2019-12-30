@@ -1,6 +1,7 @@
 .product-container {
     display: flex;
     flex-direction: column;
+    margin: 10px;
 }
 
 .product {
@@ -8,6 +9,22 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    margin: 10px;
+    border-width: 2px;
+    border-image: linear-gradient(45deg, transparent, transparent 100%);
+    border-image-slice: 9;
+    border-style: solid;
+}
+
+.product:hover {
+    border-width: 2px;
+    border-image: linear-gradient(45deg, #6eebb0, #41e762 100%);
+    border-image-slice: 9;
+    border-style: solid;
+}
+
+.product>* {
+    padding: 10px;
 }
 
 .product-thumbnail {
@@ -31,9 +48,52 @@
     font-weight: bold;
 }
 
+.product-genre {
+    font-weight: 300;
+}
+
+.product-genre::before {
+    content: "Genre: ";
+    font-weight: bold;
+}
+
+.product-studio {
+    font-weight: 300;
+}
+
+.product-studio::before {
+    content: "Studio: ";
+    font-weight: bold;
+}
+
+.product-format {
+    font-weight: 300;
+}
+
+.product-format::before {
+    content: "Format: ";
+    font-weight: bold;
+}
+
 .price-and-offers {
     display: flex;
     flex-direction: column;
     align-items: flex-end;   
-    flex: .1;   
+    flex: .2;
+}
+
+.price-tag {
+    padding: 10px;
+    background: -webkit-linear-gradient(green, #6fecb1);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+}
+
+.dial-to {
+    font-size: 13px;
+    padding: 10px;
+    background: -webkit-linear-gradient(violet, limegreen);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
