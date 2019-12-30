@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../models/product.models';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,11 +10,16 @@ import { ProductService } from '../product.service';
 })
 export class ProductsComponent implements OnInit {
   products: ProductModel[];
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+              private router: Router) { }
 
   ngOnInit() {
     this.productService.getAllProducts()
     .subscribe(_products_ => this.products = _products_);
+  }
+
+  getMoreDetailsAbout(product: ProductModel) {
+    this.router.navigate(['products/'+product._id.$oid]);
   }
 
   deduplicateArray(_products_: ProductModel[]) {

@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component';
 
 const childRoutes: Routes = [
   {path: 'products', component: ProductsComponent},
-  {path: 'products/:id', component: ProductDescriptionComponent}
+  {path: 'products/:productId', component: ProductDescriptionComponent}
 ];
 
 const routes: Routes = [

@@ -1,1 +1,18 @@
-<p>product-description works!</p>
+<section class="product-desc-container">
+    <section class="product-desc-subcontainer" *ngIf="product">
+        <span class="product-image">
+            <img [src]="product.images.large.url" alt="">
+        </span>
+        <span class="product-details">
+            <span class="product-brand">{{product.brand}}</span>
+            <span class="product-title">{{product.title}}</span>
+            <span class="product-eye-catcher">Special price</span>
+            <span class="product-price-tag">{{product.price + ' ' + product.currency}}</span>
+            <span class="product-ratings-reviews">44 ratings and 1 reviews</span>
+            <span class="product-available-offers">
+                <span>Available offers:</span>
+                <span *ngFor="let availableOffer of availableOffers">{{availableOffer}}</span>
+            </span>
+        </span>
+    </section>
+</section>

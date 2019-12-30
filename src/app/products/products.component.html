@@ -1,5 +1,5 @@
 <section class="product-container">
-    <section class="product" *ngFor="let product of products">
+    <section class="product" *ngFor="let product of products" (click)="getMoreDetailsAbout(product)">
         <img class="product-thumbnail" [src]="product.images.medium.url" alt="Product Image">
         <span class="product-min-info">
             <span class="product-title">{{product.title}}</span>

@@ -17,4 +17,8 @@ export class ProductService {
   getProductsByFilter(): Observable<ProductModel[]> {
     return this.httpClient.get<ProductModel[]>(this.apiRootUri + '?$filter=brand%20eq%20%27Encore%20Software%27');
   }
+
+  getProductById(productId: number): Observable<ProductModel> {
+    return this.httpClient.get<ProductModel>(this.apiRootUri + '/' + productId);
+  }
 }
