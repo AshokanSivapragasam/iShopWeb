@@ -1,0 +1,39 @@
+.product-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.product-thumbnail {
+    width: 160px;
+    height: 160px;
+}
+
+.product-min-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+    flex: .85;
+}
+
+.product-title {
+    font-weight: 300;
+}
+
+.product-title::before {
+    content: "Title: ";
+    font-weight: bold;
+}
+
+.price-and-offers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   
+    flex: .1;   
+}

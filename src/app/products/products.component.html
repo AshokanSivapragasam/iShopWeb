@@ -1,0 +1,15 @@
+<section class="product-container">
+    <section class="product" *ngFor="let product of products">
+        <img class="product-thumbnail" [src]="product.images.medium.url" alt="Product Image">
+        <span class="product-min-info">
+            <span class="product-title">{{product.title}}</span>
+            <span class="product-genre">{{product.genre}}</span>
+            <span class="product-studio">{{product.studio}}</span>
+            <span class="product-format">{{product.format}}</span>
+        </span>
+        <span class="price-and-offers">
+            {{(product.price != undefined ? product.price: '0') + ' ' + (product.currency != undefined ? product.currency: 'USD')}} 
+        </span>
+    </section>
+</section>
+
