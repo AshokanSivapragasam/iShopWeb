@@ -10,5 +10,16 @@
                 <span>Continue as guest</span>
             </button>
         </span>
+        <span class="login-form-container">
+            <form [formGroup]="loginForm" (ngSubmit)="mobileLoginUsingOtp()" class="login-form">
+                <a (click)="getOtp()">Get Otp</a>
+                <input type="text" formControlName="phoneNumber" spellcheck="false">
+                <input type="password" formControlName="otp" spellcheck="false">
+                <button type="submit">
+                    <i class="material-icons">keyboard</i>
+                    <span>Continue with Otp</span>
+                </button>
+            </form>
+        </span>
     </section>
 </section>
