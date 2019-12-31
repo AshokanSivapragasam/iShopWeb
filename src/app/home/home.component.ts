@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessengerService } from '../messenger.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  searchKeyWord: string;
+  constructor(private messengerService: MessengerService) { }
 
   ngOnInit() {
   }
 
+  updateProducts(_searchKeyWord_: string) {
+    console.log(_searchKeyWord_);
+    this.messengerService.spreadNewSearchKeyWord(_searchKeyWord_);
+  }
 }

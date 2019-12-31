@@ -3,6 +3,7 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: #ee4b71;
     background: rgba(98,234,170,0.92);
     background: -moz-linear-gradient(left, rgba(98,234,170,0.92) 16%, rgba(93,246,120,0.92) 37%, rgba(90,255,82,0.94) 53%, rgba(90,255,82,0.97) 73%, rgba(64,231,98,1) 100%);
     background: -webkit-gradient(left top, right top, color-stop(16%, rgba(98,234,170,0.92)), color-stop(37%, rgba(93,246,120,0.92)), color-stop(53%, rgba(90,255,82,0.94)), color-stop(73%, rgba(90,255,82,0.97)), color-stop(100%, rgba(64,231,98,1)));
@@ -18,8 +19,32 @@ header {
     flex-direction: row;
     align-items: center;   
     justify-content: flex-start;
-    flex: .5;
+    flex: .333;
     padding: 15px;
+}
+
+.global-search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;   
+    justify-content: flex-start;
+    flex: .333;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background-color: ivory;
+}
+
+.global-search-bar>i {
+    color: limegreen;
+}
+
+.global-search-bar>input {
+    outline: none;
+    border: none;
+}
+
+.global-search-bar>input::placeholder {
+    color: lawngreen;
 }
 
 .flying-login-header {
@@ -27,6 +52,6 @@ header {
     flex-direction: row;
     align-items: center;   
     justify-content: flex-end;
-    flex: .5;
+    flex: .333;
     padding: 15px;
 }

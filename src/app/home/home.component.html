@@ -3,6 +3,10 @@
         <i class="material-icons">shopping_cart</i>
         <span>Site Floating Header</span>
     </section>
+    <section class="global-search-bar">
+        <i class="material-icons">search</i>
+        <input type="text" placeholder="Search entire page" spellcheck="false" [(ngModel)]="searchKeyWord" (ngModelChange)="updateProducts(searchKeyWord)">
+    </section>
     <section class="flying-login-header">
         <i class="material-icons">person</i>
         <span>Welcome, guest!</span>

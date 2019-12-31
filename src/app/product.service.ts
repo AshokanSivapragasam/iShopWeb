@@ -14,8 +14,8 @@ export class ProductService {
     return this.httpClient.get<ProductModel[]>(this.apiRootUri + '?$top=50&$orderby=title desc');
   }
 
-  getProductsByFilter(): Observable<ProductModel[]> {
-    return this.httpClient.get<ProductModel[]>(this.apiRootUri + '?$filter=brand%20eq%20%27Encore%20Software%27');
+  getProductsByFilter(filterCondition: string): Observable<ProductModel[]> {
+    return this.httpClient.get<ProductModel[]>(this.apiRootUri + filterCondition);
   }
 
   getProductById(productId: number): Observable<ProductModel> {
