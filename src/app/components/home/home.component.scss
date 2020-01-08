@@ -1,4 +1,6 @@
 header {
+    position: sticky !important;
+    top: 0px;
     height: 13vh;
     display: flex;
     flex-direction: row;
@@ -41,6 +43,7 @@ header {
 .global-search-bar>input {
     outline: none;
     border: none;
+    color: green;
 }
 
 .global-search-bar>input::placeholder {

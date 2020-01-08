@@ -1,0 +1,111 @@
+.product-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.product-sub-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.products-by-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.product-category-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    border-image: linear-gradient(45deg, transparent, transparent 100%);
+    border-image-slice: 9;
+    border-style: solid;
+    width: 190px;
+    height: 296px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.product:hover {
+    border-width: 2px;
+    border-image: linear-gradient(45deg, #6eebb0, #41e762 100%);
+    border-image-slice: 9;
+    border-style: solid;
+}
+
+.product-thumbnail {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: auto;
+    height: auto;
+}
+
+.product-min-info {
+    display: flex;
+    flex: .75;
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-start;   
+    justify-content: flex-end;
+}
+
+.product-title {
+    font-weight: 200;
+    font-size: 13px;
+}
+
+.product-genre {
+    font-weight: 300;
+    font-size: 14px;
+    color: grey;
+}
+
+.price-and-offers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   
+    flex: .2;
+}
+
+.special-price-tag {
+    display: flex;
+    flex-direction: row;
+}
+
+.new-price-tag {
+    background: -webkit-linear-gradient(green, #6fecb1);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 15px;
+    padding: 5px 5px 5px 0px;
+}
+
+.old-price-tag {
+    color: grey;
+    text-decoration: line-through;
+    padding: 5px 5px 5px 0px;
+}
+
+.dial-to {
+    font-size: 13px;
+    padding: 10px;
+    background: -webkit-linear-gradient(violet, limegreen);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

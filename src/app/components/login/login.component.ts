@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { LoginService } from '../login.service';
-import { AzSignalRService } from '../azsignalr.service';
+import { LoginService } from '../../services/login.service';
+import { AzSignalRService } from '../../services/azsignalr.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
+  messagesSubscription: Subscription;
+  loginErrorMessage: string = '';
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private loginService: LoginService,
@@ -22,12 +25,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.azSignalRService.init();
+    this.azSignalRService.initHubConnection();
     if (localStorage.getItem('user-identity')) {
       this.router.navigate(['/products']);
     }
 
-    this.azSignalRService.messages
+    this.messagesSubscription = this.azSignalRService.messages
     .subscribe(_newOtp_ => {
       console.log(_newOtp_);
       this.loginForm.setValue({phoneNumber: this.loginForm.value.phoneNumber, otp: _newOtp_});
@@ -35,12 +38,13 @@ export class LoginComponent implements OnInit {
   }
 
   guestLogin() {
+    localStorage.setItem('user-identity', JSON.stringify({ phoneNumber: '_phoneNumber', otp: '_otp', isIdentityProved: true }));
     this.router.navigate(['/products']);
   }
 
   getOtp() {
     const _phoneNumber = this.loginForm.value.phoneNumber;
-    this.loginService.getOtp(_phoneNumber)
+    this.loginService.sendOtp(_phoneNumber)
     .subscribe(_result_ => {
       console.log(_result_);
     });
@@ -56,8 +60,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/products']);
       } else {
         localStorage.removeItem('user-identity');
-        this.router.navigate(['/login']);
+        this.loginErrorMessage = 'Login Failed';
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.messagesSubscription.unsubscribe();
   }
 }

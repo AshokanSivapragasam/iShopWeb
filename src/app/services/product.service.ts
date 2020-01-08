@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductModel } from './models/product.models';
+import { ProductModel } from '../models/product.models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class ProductService {
     return this.httpClient.get<ProductModel[]>(this.apiRootUri + filterCondition);
   }
 
-  getProductById(productId: number): Observable<ProductModel> {
+  getProductById(productId: string): Observable<ProductModel> {
     return this.httpClient.get<ProductModel>(this.apiRootUri + '/' + productId);
   }
 }

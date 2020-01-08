@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { HubConnection } from '@aspnet/signalr';
 import * as signalR from '@aspnet/signalr';
-import { Subject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class AzSignalRService {
 
     private readonly _http: HttpClient;
@@ -16,18 +18,19 @@ export class AzSignalRService {
 
     constructor(http: HttpClient) {
         this._http = http;
-    }
-    init() {
-        for (var idx = 0; idx < this.numberOfBlocks; idx += 1) {
-            this.colors.push(new Subject());
-        }
-
+        
         this.hubConnection = new signalR.HubConnectionBuilder()
             .withUrl(this._baseUrl)
             .configureLogging(signalR.LogLevel.Information)
             .build();
-
         this.hubConnection.start().catch(err => console.error(err.toString()));
+    }
+
+    initHubConnection() {
+        this.tryCloseHubConnection();
+        for (var idx = 0; idx < this.numberOfBlocks; idx += 1) {
+            this.colors.push(new Subject());
+        }
 
         this.hubConnection.on('ReceiveMessage', (message: string) => {
             this.messages.next(message);
@@ -43,6 +46,18 @@ export class AzSignalRService {
                 //console.log('Received an event, ' + colorCode);
                 this.colors[blockIndex].next(blockIndex + ',' + colorCode);
             });
+        }
+    }
+
+    private tryCloseHubConnection() {
+        if (this.hubConnection != null && this.hubConnection.state === signalR.HubConnectionState.Connected) {
+            console.log('tryCloseHubConnection');
+            this.hubConnection.off('ReceiveMessage');
+            this.hubConnection.off('FruitUpdated');
+            for (var idx = 0; idx < this.numberOfBlocks; idx += 1) {
+                this.hubConnection.off('Block' + idx + 'ColorChanged');
+            }
+            this.messages.next();
         }
     }
 

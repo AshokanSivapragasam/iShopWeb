@@ -16,11 +16,11 @@ export class LoginService {
   
   constructor(private httpClient: HttpClient) { }
 
-  getOtp(phoneNumber: string): Observable<boolean>{
-    return this.httpClient.get<boolean>(this.apiRootUri + '/getotp/' + phoneNumber);
+  sendOtp(phoneNumber: string): Observable<boolean>{
+    return this.httpClient.post<boolean>(this.apiRootUri + '/sendotp', { PhoneNumber: phoneNumber}, httpOptions);
   }
 
   challengeIdentityUsingOtp(phoneNumber: string, otp: string): Observable<boolean>{
-    return this.httpClient.post<boolean>(this.apiRootUri + '/usingotp', { PhoneNumber: phoneNumber, Otp: otp }, httpOptions);
+    return this.httpClient.post<boolean>(this.apiRootUri + '/loginwithotp', { PhoneNumber: phoneNumber, Otp: otp }, httpOptions);
   }
 }

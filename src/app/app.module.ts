@@ -2,18 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MsAdalAngular6Module, AuthenticationGuard } from 'microsoft-adal-angular6';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductDescriptionComponent } from './product-description/product-description.component';
-import { LoginService } from './login.service';
-import { AzSignalRService } from './azsignalr.service';
-import { MessengerService } from './messenger.service';
-import { ProductService } from './product.service';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductDescriptionComponent } from './components/product-description/product-description.component';
+import { LoginService } from './services/login.service';
+import { AzSignalRService } from './services/azsignalr.service';
+import { MessengerService } from './services/messenger.service';
+import { ProductService } from './services/product.service';
+import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
 
 @NgModule({
   declarations: [
@@ -22,16 +24,24 @@ import { ProductService } from './product.service';
     RegisterComponent,
     HomeComponent,
     ProductsComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    ProductsByCategoryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MsAdalAngular6Module.forRoot({
+      tenant: 'happiestminds.onmicrosoft.com',
+      clientId: '94b0d72e-acda-4fb5-b7b9-5f9d5a4c6bf3',
+      redirectUri: window.location.origin,
+      navigateToLoginRequestUrl: false,
+      cacheLocation: 'localStorage'
+    }),
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, AzSignalRService, MessengerService, ProductService],
+  providers: [LoginService, AzSignalRService, MessengerService, ProductService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

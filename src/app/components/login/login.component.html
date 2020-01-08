@@ -12,6 +12,7 @@
         </span>
         <span class="login-form-container">
             <form [formGroup]="loginForm" (ngSubmit)="mobileLoginUsingOtp()" class="login-form">
+                <span class="login-error-message">{{loginErrorMessage}}</span>
                 <a (click)="getOtp()">Get Otp</a>
                 <input type="text" formControlName="phoneNumber" spellcheck="false">
                 <input type="password" formControlName="otp" spellcheck="false">

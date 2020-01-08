@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MessengerService } from '../messenger.service';
+import { MessengerService } from '../../services/messenger.service';
 import { Router } from '@angular/router';
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   searchKeyWord: string;
   constructor(private messengerService: MessengerService,
-              private router: Router) { }
+              private router: Router,
+              private msAdalAngular6Service: MsAdalAngular6Service) { }
 
   ngOnInit() {
   }
@@ -23,5 +25,9 @@ export class HomeComponent implements OnInit {
   signOut() {
     localStorage.removeItem('user-identity');
     this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.msAdalAngular6Service.logout();
   }
 }
