@@ -88,18 +88,36 @@
     flex-direction: row;
 }
 
+.special-price-tag>* {
+    font-size: small;
+    padding: 5px 5px 5px 0px;
+}
+
 .new-price-tag {
     background: -webkit-linear-gradient(green, #6fecb1);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 15px;
-    padding: 5px 5px 5px 0px;
 }
 
 .old-price-tag {
     color: grey;
     text-decoration: line-through;
-    padding: 5px 5px 5px 0px;
+}
+
+.price-variance {
+    font-size: small;
+}
+
+.negative-number {
+    color: dodgerblue;
+}
+
+.negative-number::before {
+    content: '+';
+}
+
+.positive-number {
+    color: red;
 }
 
 .dial-to {

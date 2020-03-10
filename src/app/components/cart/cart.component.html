@@ -1,0 +1,11 @@
+<section class="cart-container" *ngIf="cart">
+    <section *ngFor="let cartItem of cart.cartItems">
+        <span *ngIf="cartItem.productImages" (click)="getMoreDetailsAbout(cartItem.productId)">
+            <span class="productLink">
+                <img [src]="cartItem.productImages.small.url" alt="" [width]="cartItem.productImages.small.width" [height]="cartItem.productImages.small.height">
+            </span>
+            <span class="productTitle">{{cartItem.productTitle}}</span>
+            <span class="productQuantity">{{cartItem.quantity}}</span>
+        </span>
+    </section>
+</section>

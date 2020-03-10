@@ -16,6 +16,8 @@ import { AzSignalRService } from './services/azsignalr.service';
 import { MessengerService } from './services/messenger.service';
 import { ProductService } from './services/product.service';
 import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
+import { CartService } from './services/cart.service';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ProductsByCategoryComponent } from './components/products-by-category/p
     HomeComponent,
     ProductsComponent,
     ProductDescriptionComponent,
-    ProductsByCategoryComponent
+    ProductsByCategoryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { ProductsByCategoryComponent } from './components/products-by-category/p
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, AzSignalRService, MessengerService, ProductService, AuthenticationGuard],
+  providers: [LoginService, AzSignalRService, MessengerService, ProductService, CartService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

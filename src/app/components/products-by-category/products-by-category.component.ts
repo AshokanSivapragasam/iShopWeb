@@ -58,7 +58,19 @@ export class ProductsByCategoryComponent implements OnInit, OnDestroy, AfterView
     _products_.forEach(_product_ => {
       var _productBrand_ =_product_.brand ? _product_.brand: 'Uncategorized';
       var _productsByOneCategory_ = _productsByCategory_[_productBrand_];
-      if(_productsByOneCategory_=== undefined) _productsByOneCategory_ = [];
+      if(_productsByOneCategory_ === undefined) _productsByOneCategory_ = [];
+      if(_product_.price === undefined) {
+        _product_.price = 0;
+        _product_.oldprice = 0;
+        _product_.pricevariance = '0.00';
+      } else {
+         _product_.oldprice = _product_.price + (Math.floor(Math.random() * 943) - 367);
+         _product_.pricevariance = (((_product_.price - _product_.oldprice) / _product_.price) * 100.0).toFixed(2);
+      }
+
+       if(_product_.currency === undefined) {
+        _product_.currency = 'USD';
+       }
       _productsByOneCategory_.push(_product_);
       _productsByCategory_[_productBrand_] = _productsByOneCategory_;
       

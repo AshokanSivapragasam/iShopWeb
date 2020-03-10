@@ -1,16 +1,11 @@
-<div class="img-zoom-container" (mouseenter)="imageZoom('myimage', 'myresult');">
-    <img id="myimage" src="https://wittlock.github.io/ngx-image-zoom/assets/fullres.jpg"
-        width="300" height="240">
-    <div style="position: sticky; top: 0; left: 50%;">
-        <div id="myresult" class="img-zoom-result"></div>
-    </div>
-</div>
-
 <section class="product-desc-container">
     <section class="product-desc-subcontainer" *ngIf="product">
-        <span class="product-image">
-            <img [src]="product.images.large.url" alt="">
-        </span>
+        <div class="img-zoom-container" (mouseenter)="showMagnifiedImageAside('imageTarget', 'magnifiedImage');" (mouseleave)="hideMagnifiedImage()">
+            <span class="product-image">
+                <img id="imageTarget" [src]="product.images.large.url" alt="" [width]="product.images.large.width" [height]="product.images.large.height">
+            </span>
+            <div id="magnifiedImage" [ngStyle]="{'display': (showMagnified? 'block': 'none')}" class="img-zoom-result"></div>
+        </div>
         <span class="product-details">
             <span class="product-brand">{{product.brand}}</span>
             <span class="product-title">{{product.title}}</span>
@@ -23,5 +18,4 @@
             </span>
         </span>
     </section>
-
 </section>

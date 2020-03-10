@@ -37,7 +37,7 @@ describe('ProductDescriptionComponent', () => {
 
   it('ng oninit', () => {
     // Arrange
-    var expectedProduct = JSON.parse(JSON.stringify(ProductsJsonData.products.find(r=>r._id.$oid = productId)));
+    var expectedProduct = JSON.parse(JSON.stringify(ProductsJsonData.products.find(r=>r._id.oid = productId)));
     spyOn(productService, 'getProductById').and.returnValue(of(expectedProduct));
 
     // Act
@@ -47,7 +47,7 @@ describe('ProductDescriptionComponent', () => {
     expect(component).toBeDefined();
     expect(productService.getProductById).toHaveBeenCalledWith(productId);
     expect(component.productId).toEqual(productId);
-    expect(component.product._id.$oid).toEqual(productId);
+    expect(component.product._id.oid).toEqual(productId);
     expect(component.availableOffers).toBeDefined();
     expect(component.availableOffers.length).toEqual(4);
   });

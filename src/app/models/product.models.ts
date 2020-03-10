@@ -1,5 +1,5 @@
 export interface Id {
-    $oid: string;
+    oid: string;
 }
 
 export interface Small {
@@ -59,6 +59,8 @@ export interface ProductModel {
     hardwareplatform: string;
     label: string;
     price: number;
+    oldprice?: number;
+    pricevariance: string;
     currency: string;
     manufacturer: string;
     model: string;

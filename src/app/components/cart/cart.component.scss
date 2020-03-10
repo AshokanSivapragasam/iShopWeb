@@ -1,0 +1,34 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cart-container>section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-container>section>span {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid transparent;
+    transition: all .3s ease-in-out;
+}
+
+.cart-container>section>span:hover {
+    border: 2px solid greenyellow;
+    background-color: lightgrey;
+}
+
+.cart-container>section>span>span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    width: 150px;
+}

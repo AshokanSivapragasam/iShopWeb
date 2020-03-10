@@ -1,5 +1,6 @@
 header {
-    position: sticky !important;
+    z-index: 999;
+    position: sticky;
     top: 0px;
     height: 13vh;
     display: flex;

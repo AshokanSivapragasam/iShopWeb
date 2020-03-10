@@ -8,8 +8,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const childRoutes: Routes = [
+  {path: 'carts/:cartId', component: CartComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'productsbycategory', component: ProductsByCategoryComponent},
   {path: 'products/:productId', component: ProductDescriptionComponent}

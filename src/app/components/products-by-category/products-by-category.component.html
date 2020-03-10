@@ -4,33 +4,20 @@
 		<section class="products-by-category" *ngFor="let productsByCategoryKey of productsByCategoryKeys">
             <span class="category-title">{{productsByCategoryKey}}</span>
             <section class="product-category-container">
-			    <section class="product" *ngFor="let product of productsByCategory[productsByCategoryKey]" (click)="getMoreDetailsAbout(product._id.$oid)">
+			    <section class="product" *ngFor="let product of productsByCategory[productsByCategoryKey]" (click)="getMoreDetailsAbout(product._id.oid)">
 					<img class="product-thumbnail" [src]="product.images.medium.url" alt="Product Image">
 					<span class="product-min-info">
 						<span class="product-genre">{{product.genre}}</span>
 						<span class="product-title">{{product.title}}</span>
 						<span class="special-price-tag">
-							<span class="new-price-tag">{{(product.price != undefined ? product.price: '0') + ' ' + (product.currency != undefined ? product.currency: 'USD')}}</span>
-							<span class="old-price-tag">{{(product.price != undefined ? product.price: '0') + ' ' + (product.currency != undefined ? product.currency: 'USD')}}</span>
+							<span class="new-price-tag">{{product.price + ' ' + product.currency}}</span>
+							<span class="old-price-tag">{{(product.oldprice) + ' ' + product.currency}}</span>
 						</span>
+						<span [ngClass]="['price-variance',  (product.pricevariance >= 0? 'negative-number': 'positive-number')]">{{product.pricevariance}}</span>
 					</span>
                 </section>
             </section>
 		</section>
-
-		<!--<section class="product" *ngFor="let product of products" (click)="getMoreDetailsAbout(product._id.$oid)">
-			<img class="product-thumbnail" [src]="product.images.medium.url" alt="Product Image">
-			<span class="product-min-info">
-				<span class="product-title">{{product.title}}</span>
-				<span class="product-genre">{{product.genre}}</span>
-				<span class="product-studio">{{product.studio}}</span>
-				<span class="product-format">{{product.format}}</span>
-			</span>
-			<span class="price-and-offers">
-				<span class="price-tag">{{(product.price != undefined ? product.price: '0') + ' ' + (product.currency != undefined ? product.currency: 'USD')}} </span>
-				<span class="dial-to">+1 222 333 444 55</span>
-			</span>
-		</section>-->
     </section>
 </section>
 

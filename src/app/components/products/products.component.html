@@ -1,6 +1,6 @@
 <section class="product-container">
     <span *ngIf="products == undefined || !products.length">No products available! Please check and modify search phrase.</span>
-    <section class="product" *ngFor="let product of products" (click)="getMoreDetailsAbout(product._id.$oid)">
+    <section class="product" *ngFor="let product of products" (click)="getMoreDetailsAbout(product._id.oid)">
         <img class="product-thumbnail" [src]="product.images.medium.url" alt="Product Image">
         <span class="product-min-info">
             <span class="product-title">{{product.title}}</span>
